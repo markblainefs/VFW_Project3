@@ -1,0 +1,69 @@
+<!doctype html>
+<!--VFW Week 2: Web App Part 2-->
+<!--Mark A. Blaine - VFW 1207-->
+<html>
+	<head>
+	
+		<!--Meta data-->
+		<meta charset="utf-8" />
+		<meta name="keywords" content="list, to do, errands" />
+		<meta name="description" content="Form for Honey Do input" />
+		<meta name="robots" content="index, follow" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="css/styles.css"
+	
+		<!--Page title-->
+		<title>Honey Do</title>
+		
+	</head>
+	
+	<body>
+	
+		<header>
+			<h1>Honey Do</h1>
+		</header>
+		<!--Form data-->
+		<form id="honeyForm" action="#" method ="post">
+			<fieldset>
+				<legend>Honey Do:</legend>
+				<!--Text input-->
+				<div id="textFields">
+					<ul id="questions">
+						<li><label for="taskName">Task name:</label><input type="text" id="taskName" /></li>
+						<li id="select"><label for="location">Location:</label></li>
+						<!--Date input-->
+						<li><label for="dueDate">Due date:</label><input type="date" id="dueDate" /></li>
+						<!--Range input-->
+						<li><label for="importance">Importance:</label><input type="range" id="importance" min="1" max="10" /></li>
+					</ul>
+				</div>
+				<!--Radio input-->
+				<div id="radios">
+					Priority:<br/>
+					<input type="radio" checked id="low" value="Because you love me" name="priority" /><label for="low"> Because you love me</label><br/>
+					<input type="radio" id="medium" value="I\'ve asked you once" name="priority" /><label for="medium"> I've already asked you once</label><br/>
+					<input type="radio" id="high" value="You\'re in trouble" name="priority" /><label for="high"> You are in trouble</label><br/>
+					<input type="hidden" id="forHoney" name="honey" value="Him" />
+				</div>
+				<br/>
+				<!--Textarea input-->
+				<div id="instructions">
+					<label for="specialInstructions">How to not mess up:</label><br/>
+					<textarea id="specialInstructions"></textarea><br/>
+					<input type="submit" value="Honey Do This" id="submit"" /><br/>				
+				</div>
+			</fieldset>
+		</form>
+		<br/>
+		<nav>
+			<a href = "#" id="clear">Clear stored data</a> 
+			<a href="#" id="displayLink">Display data</a>
+			<a href="additem.html" id="addNew" style="display:none;">Add new item</a><br/><br/>
+		</nav>
+		<!--Disappearing header for list view-->
+		<h2 id="listHeader" style="display:none;">Honey Do List</h2>
+
+		<script src=js/main.js type="text/javascript"></script>
+		
+	</body>
+</html>
