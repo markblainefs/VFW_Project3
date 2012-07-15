@@ -1,5 +1,5 @@
 <!doctype html>
-<!--VFW Week 2: Web App Part 2-->
+<!--VFW Week 3: Web App Part 3-->
 <!--Mark A. Blaine - VFW 1207-->
 <html>
 	<head>
@@ -9,20 +9,23 @@
 		<meta name="keywords" content="list, to do, errands" />
 		<meta name="description" content="Landing page for Honey Do web app" />
 		<meta name="robots" content="index, follow" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="stylesheet" href="css/styles.css"
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<link rel="stylesheet" href="css/styles.css" />
 		
 		<!--Page Title-->
 		<title>Honey Do</title>
 		
 	</head>
-	<body>
-	
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 		<header>
-			<h1>Honey Do</h1>
+			<h1>
+				<img src="images/starCircle.gif" alt="Circle Star" height="35" width="35" />
+				Honey Do
+				<img src="images/starCircle.gif" alt="Circle Star" height="35" width="35" />
+			</h1>
 		</header>
-		<p>Track domestic assignments</p>
-		<h2>Get something done</h2>
+		<p>Keep track of domestic assignments from your significant other</p>
+		<h2>Make someone happy</h2>
 		<a href = "additem.html">Add a Honey Do</a>
 		
 	</body>

@@ -1,6 +1,6 @@
 //Mark A. Blaine
 //VFW 1207
-//JavaScript for Project 2
+//JavaScript for Project 3
 
 //Wait until DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.importance	= ["Importance:", $('importance').value];
 			item.priority 	= ["Priority:", priorityValue];
 			item.honey 		= ["List for:", $('forHoney').value];
-			item.specialInstructions = ["How to not mess up:", $('specialInstructions').value];
+			item.specialInstructions = ["Details:", $('specialInstructions').value];
 		//Save data to local storage: Use Stringify to convert our object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Honey Do Saved!");
@@ -84,7 +84,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getData(){
 		toggleControls("on");
 		if (localStorage.length===0){
-			alert("There is nothing for the Honey to do");
+			alert("You don't have anything to do");
 		}
 		//Write data from local storage to the browser
 		var makeDiv = document.createElement('div');
@@ -126,7 +126,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	//Variable defaults
-	var locations = ["--Choose a Location--", "Home", "Car", "Errand"],
+	var locations = ["-Choose a Location-", "Home", "Car", "Errand"],
 		priorityValue;
 
 	//Run the makeList function to create the location dropdown

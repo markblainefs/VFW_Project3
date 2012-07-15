@@ -1,86 +1,74 @@
 /*
 CSS for VFW 1207
 Mark A. Blaine
-12 July 2012
+July 2012
 */
 
 body {	
 	font-family: Arial, Helvetica, sans-serif;
-	color: navy;
-	width: 350px;
-	margin: auto;
-	padding: 10px;
-	background: grey;
+	color: white;
+	background:url('../images/smallBurst.gif');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color:#3b3a3a;
 }
 
 header {
 	font-family: "Times New Roman", Times, serif;
+	font-size: x-large;
 }
 
 h1 {
-	letter-spacing: 3px;
-	padding: 10px;
-	color: white;
-	margin: 10px;
+/* 	padding: 10px; */
+	margin: 0 0 10px 0;
+/*
 	border: 5px solid pink;
 	background: navy;
-	width: 48%;
+*/
 }
 
 h2 {
-	color: pink;
-	font-weight: bold;
-	word-spacing: 3px;
 	text-transform: capitalize;
 }
 
 p {
-	color: pink;
 	font-weight: bold;
 }
 
 legend {
-	color: white;
+	color: lightgrey;
 }
 
 form {
-	background: grey;
+	background:url('../images/lines.gif');
+	background-size: 40%;
+	background-repeat: no-repeat;
+	background-position: bottom right
 }
 
-div#textFields {
-	padding: 5px;
-	background: lightgrey;
+#textfields {
+	padding: 0 0 0 0;
 }
 
-div#radios {
-	background: pink;
-	line-height: 150%;
-	padding: 5px;
-	color: navy;
-	text-indent: 20px;
+#radios {
+	padding-left: 20px;
 }
 
-div#instructions {
-	color: white;
+#instructions {
+	padding-left: 20px;
 }
 
-div#items ul{
-	color: pink;
-	list-style-type: decimal;
+#items ul{
+	list-style-image: url('../images/starBullet.png');
 	margin-bottom: 20px;
 }
 
-div#items ul ul{
-	color: white;
-	list-style-type: square;
-}
-
 a {
+	color: white;
 	margin-right: 15px;
 	margin-bottom: 15px;
-	color: white;
 }
 
 a:hover {
-	color: pink;
+	color: red;
 }
