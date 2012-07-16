@@ -46,21 +46,33 @@ form {
 	background-position: bottom right
 }
 
-#textfields {
-	padding: 0 0 0 0;
+form ul {
+	list-style: none;
+	padding-left: 0px;
 }
 
-#radios {
-	padding-left: 20px;
-}
-
-#instructions {
-	padding-left: 20px;
-}
-
-#items ul{
+#items ul {
 	list-style-image: url('../images/starBullet.png');
 	margin-bottom: 20px;
+}
+
+#items ul li ul {
+	margin-bottom: 15px;
+	padding-left: 0;
+	border-top: white ridge;
+}
+
+#items ul li ul li {
+	list-style-image: none;
+	list-style-type: none;
+}
+#listHeader {
+	margin-left: 40px;
+}
+
+li a {
+	line-height: 40px;
+	color: lightgrey;
 }
 
 a {

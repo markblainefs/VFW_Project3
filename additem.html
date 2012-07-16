@@ -29,7 +29,7 @@
 		<!--Form data-->
 		<form id="honeyForm" action="#" method ="post">
 			<fieldset>
-				<legend>Details</legend>
+				<legend>What To Do</legend>
 				<!--Text input-->
 				<div id="textFields">
 					<ul id="questions">
@@ -43,17 +43,17 @@
 				</div>
 				<!--Radio input-->
 				<div id="radios">
-					Priority:<br/>
-					<input type="radio" checked id="low" value="Because I'm awesome" name="priority" /><label for="low"> Because I'm awesome</label><br/>
-					<input type="radio" id="medium" value="Second request" name="priority" /><label for="medium"> Second request</label><br/>
+					Because:<br/>
+					<input type="radio" id="low" value="I'm awesome" name="priority" /><label for="low"> I'm awesome</label><br/>
+					<input type="radio" id="medium" value="I need to" name="priority" /><label for="medium"> I need to</label><br/>
 					<input type="radio" id="high" value="I'm in trouble" name="priority" /><label for="high"> I'm in trouble</label><br/>
 					<input type="hidden" id="forHoney" name="honey" value="Me" />
 				</div>
 				<br/>
 				<!--Textarea input-->
 				<div id="instructions">
-					<label for="specialInstructions">Assignment:</label><br/>
-					<textarea id="specialInstructions" rows="3" cols="35">Enter details of assignment here</textarea><br/>
+					<label for="specialInstructions">Details:</label><br/>
+					<textarea id="specialInstructions" rows="3" cols="35"></textarea><br/>
 				</div>
 				<input type="submit" value="Add To List" id="submit" /><br/>				
 			</fieldset>
