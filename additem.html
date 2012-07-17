@@ -32,6 +32,7 @@
 				<legend>What To Do</legend>
 				<!--Text input-->
 				<div id="textFields">
+					<ul id="errors"></ul>
 					<ul id="questions">
 						<li><label for="taskName">Task name:</label><input type="text" id="taskName" /></li>
 						<li id="select"><label for="location">Location:</label></li>
@@ -44,7 +45,7 @@
 				<!--Radio input-->
 				<div id="radios">
 					Because:<br/>
-					<input type="radio" id="low" value="I'm awesome" name="priority" /><label for="low"> I'm awesome</label><br/>
+					<input type="radio" checked id="low" value="I'm awesome" name="priority" /><label for="low"> I'm awesome</label><br/>
 					<input type="radio" id="medium" value="I need to" name="priority" /><label for="medium"> I need to</label><br/>
 					<input type="radio" id="high" value="I'm in trouble" name="priority" /><label for="high"> I'm in trouble</label><br/>
 					<input type="hidden" id="forHoney" name="honey" value="Me" />

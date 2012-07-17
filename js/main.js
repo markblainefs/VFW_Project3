@@ -52,8 +52,8 @@ window.addEventListener("DOMContentLoaded", function(){
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "inline";
 				$('addNew').style.display = "none";
-				$('items').style.display = "none";
 				$('listHeader').style.display = "none";
+				$('items').style.display = "none";
 				break;
 			default:
 				return false;
@@ -61,9 +61,17 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	//Store the form data in local storage
-	function storeData(){
-		//Generate a random number for a key
-		var id 				= Math.floor(Math.random()*1000000001);
+	function storeData(key){
+		//if there is no key, this is a new item and will need a key
+		if (!key){
+			//Generate a random number for a key
+			var id 				= Math.floor(Math.random()*1000000001);
+		}else{
+			//otherwise we will use the existing key and overwrite the existing data
+			//It's the same key that was passed from the edit submit event handlewr through validate function
+			//then passed here into the store data function
+			id = key;
+		}
 		//Figure out which radio button is selected
 		getSelectedRadio();
 		//Gather up all of our form field values and store in an object
@@ -132,7 +140,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Task";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -146,10 +154,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		toggleControls("off");
 		
 		//populate the form fields with the current localStorage values
-		$('taskName').value = item.taskName[1];
-		$('groups').value = item.group[1];
-		$('dueDate').value = item.dueDate[1];
-		$('importance').value = item.importance[1];
+		$('taskName').value 	= item.taskName[1];
+		$('groups').value 		= item.group[1];
+		$('dueDate').value 		= item.dueDate[1];
+		$('importance').value 	= item.importance[1];
 		//Set the radio button
 		var radios = document.forms[0].priority;
 		for (var i=0; i<radios.length; i++){
@@ -162,10 +170,17 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		$('specialInstructions').value = item.specialInstructions[1];
-	
+		
+		//Remove listener from the input "Save Task" button
+		save.removeEventListener("click", storeData);
+		//Change Save button to Save Changes
+		$('submit').value = "Save Changes";
+		var editSubmit = $('submit');
+		//Save the key value established in this function as a property of the editSubmit event
+		//so we can use that value when we save the data we edited
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key
 	}
-	
-	
 	
 	//Function to clear the local storage
 	function clearLocal(){
@@ -179,20 +194,93 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function validate(e) {
+		//Define the elements that we want to check
+		var getTaskName = $('taskName');
+		var getGroup = $('groups');
+		var getDueDate = $('dueDate');
+		var getSpecialInstructions = $('specialInstructions');
+		
+		//Reset error messages
+		errMsg.innerHTML = "";
+		getTaskName.style.border = "1px solid black";
+		getGroup.style.border = "1px solid black";
+		getDueDate.style.border = "1px solid black";
+		getSpecialInstructions.style.border = "1px solid black";
+
+		
+		//Get error messages
+		var messageAry = [];
+		
+		// Task name validation
+		if (getTaskName.value ===""){
+			var taskNameError = "Please enter a task name";
+			getTaskName.style.border = "1px solid red";
+			messageAry.push(taskNameError);
+		}	
+		
+		//Group validation
+		if (getGroup.value==="-Choose a Location-"){
+			var groupError = "Please choose a location";
+			getGroup.style.border = "1px solid red";
+			messageAry.push(groupError);
+		}
+		
+		//Date validation
+		if (getDueDate.value ===""){
+			var dueDateError = "Please enter a due date";
+			getDueDate.style.border = "1px solid red";
+			messageAry.push(dueDateError);
+		}
+
+		// Details validation
+		if (getSpecialInstructions.value ===""){
+			var specialInstructionsError = "Please enter task details";
+			getSpecialInstructions.style.border = "1px solid red";
+			messageAry.push(specialInstructionsError);
+		}
+		
+		//If there were errors, display them on the screen
+
+		if(messageAry.length >=1){
+			for(var i=0, j = messageAry.length; i<j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}	
+			e.preventDefault();
+			return false;
+		}else{
+			//If all is okay, store our data.  Send the key value which came from our editData function
+			//Remember it was passed from the editSubmit listener as a property
+			storeData(this.key);
+		}
+	}
 	
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this task?");
+		if (ask){
+			localStorage.removeItem(this.key);
+			alert ("Contact was deleted");
+			window.location.reload();
+		}else{
+			alert ("Contact was NOT deleted");
+		}
+	}
 	//Variable defaults
 	var locations = ["-Choose a Location-", "Home", "Car", "Errand"],
-		priorityValue;
+		priorityValue,
+		errMsg = $('errors');
 
 	//Run the makeList function to create the location dropdown
 	makeList();
-	
+
 	//Set Link & Submit Click Events
 	var displayLink = $('displayLink');
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 
 });
