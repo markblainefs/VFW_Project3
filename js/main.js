@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		//if there is no key, this is a new item and will need a key
 		if (!key){
 			//Generate a random number for a key
-			var id 				= Math.floor(Math.random()*1000000001);
+			var id 			= Math.floor(Math.random()*1000000001);
 		}else{
 			//otherwise we will use the existing key and overwrite the existing data
 			//It's the same key that was passed from the edit submit event handlewr through validate function
@@ -91,10 +91,11 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	//Display list
 	function getData(){
-		toggleControls("on");
 		if (localStorage.length===0){
 			alert("You don't have anything to do");
+			return false;
 		}
+		toggleControls("on");
 		//Write data from local storage to the browser
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
@@ -119,7 +120,9 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubli.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
 			}
-			makeItemLinks(localStorage.key(i), linksLi); //Create our edit and delet buttons for each item in local storage
+			
+			//Create our edit and delete buttons for each item in local storage
+			makeItemLinks(localStorage.key(i), linksLi); 
 		}
 	}
 	
@@ -172,14 +175,14 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('specialInstructions').value = item.specialInstructions[1];
 		
 		//Remove listener from the input "Save Task" button
-		save.removeEventListener("click", storeData);
+		//save.removeEventListener("click", storeData);
 		//Change Save button to Save Changes
 		$('submit').value = "Save Changes";
 		var editSubmit = $('submit');
 		//Save the key value established in this function as a property of the editSubmit event
 		//so we can use that value when we save the data we edited
 		editSubmit.addEventListener("click", validate);
-		editSubmit.key = this.key
+		editSubmit.key = this.key;
 	}
 	
 	//Function to clear the local storage
@@ -261,10 +264,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		var ask = confirm("Are you sure you want to delete this task?");
 		if (ask){
 			localStorage.removeItem(this.key);
-			alert ("Contact was deleted");
+			alert ("Task was deleted");
 			window.location.reload();
 		}else{
-			alert ("Contact was NOT deleted");
+			alert ("Task was NOT deleted");
 		}
 	}
 	//Variable defaults

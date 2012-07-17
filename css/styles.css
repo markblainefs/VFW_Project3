@@ -19,12 +19,7 @@ header {
 }
 
 h1 {
-/* 	padding: 10px; */
 	margin: 0 0 10px 0;
-/*
-	border: 5px solid pink;
-	background: navy;
-*/
 }
 
 h2 {
@@ -43,12 +38,12 @@ form {
 	background:url('../images/lines.gif');
 	background-size: 40%;
 	background-repeat: no-repeat;
-	background-position: bottom right
+	background-position: bottom right;
 }
 
 form ul {
 	list-style: none;
-	padding-left: 0px;
+	padding-left: 0;
 }
 
 #items ul {
